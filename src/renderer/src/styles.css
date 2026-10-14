@@ -1,0 +1,40 @@
+/* pdf.js text-layer positioning styles (selectable, invisible text over the canvas). */
+@import 'pdfjs-dist/web/pdf_viewer.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* App-wide base. Light theme only — no dark variants anywhere. */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: #faf9f6;
+  color: #1f2933;
+  font-family: 'Segoe UI', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Positioning of the text layer is owned by pdf.js's pdf_viewer.css; we only
+   tint the selection so highlighting reads clearly on the light theme. */
+.textLayer ::selection {
+  background: rgba(79, 70, 229, 0.3);
+}
+
+/* A short pulse used to flash a highlight when the user jumps back to it. */
+@keyframes flash {
+  0% {
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0);
+  }
+}
+.flash {
+  animation: flash 1.2s ease-out 2;
+}

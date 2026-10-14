@@ -1,0 +1,14 @@
+node_modules/
+out/
+dist/
+release/
+*.log
+.DS_Store
+.vite/
+.eslintcache
+
+# TypeScript incremental build cache
+*.tsbuildinfo
+
+# Local, machine-specific Claude Code settings (keep shared settings.json if added)
+.claude/settings.local.json

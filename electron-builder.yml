@@ -1,0 +1,25 @@
+# electron-builder config — produces a normal Windows installer.
+# Per-user NSIS install (no admin rights needed), which suits students on
+# locked-down lab machines. The native better-sqlite3 .node file is unpacked
+# from the asar archive so it can be dlopen'd at runtime.
+appId: com.easypeasy.app
+productName: EasyPeasy
+directories:
+  output: release
+  buildResources: build
+files:
+  - out/**/*
+  - package.json
+asarUnpack:
+  - '**/node_modules/better-sqlite3/**'
+win:
+  target:
+    - nsis
+  artifactName: ${productName}-Setup-${version}.${ext}
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: EasyPeasy
